@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Webpage Overlay Tool",
+  "description": "A tool for overlaying websites or images for layout tracing.",
+  "version": "1.0",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "action": {
+    "default_popup": "server/public/index.html",
+    "default_icon": {
+      "16": "Copy.png"
+    }
+  },
+  "background": {
+    "service_worker": "/server/index.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ]
+}
